@@ -150,7 +150,7 @@ model.add(Dropout(0.2))
 
 model.add(Dense(units=10, activation='softmax'))
 model.compile(optimizer='adam', metrics=['accuracy'], loss='categorical_crossentropy')
-filepath='checkpoint_epoch40.hdf5'
+filepath='model/checkpoint_epoch40.hdf5'
 callback=ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='auto')
 model.fit(X_train, y_train, batch_size=32, epochs=150, verbose=1, validation_data=(X_test, y_test), callbacks=[callback])
-model.save('model_epoch40.h5')
+model.save('model/model_epoch40.h5')
