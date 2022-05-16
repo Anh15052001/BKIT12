@@ -5,15 +5,20 @@ from skimage import io, img_as_ubyte
 import random
 import os
 from scipy.ndimage import rotate
-
+from tqdm import tqdm
 import albumentations as A
 
 images_to_generate = 2000
 
-images_path = "membrane/256_patches/images/"  # path to original images
-masks_path = "membrane/256_patches/masks/"
+images_path = "membrane/train/image/"  # path to original images
+masks_path = "membrane/train/mask/"
 img_augmented_path = "membrane/augmented_train_256/aug_img/"  # path to store aumented images
 msk_augmented_path = "membrane/augmented_train_256/aug_mask/"  # path to store aumented images
+if not os.path.exists(img_augmented_path) :
+    os.makedirs(img_augmented_path)
+if not os.path.exists(msk_augmented_path) :
+    os.makedirs(msk_augmented_path)
+
 images = []  # to store paths of images from folder
 masks = []
 
@@ -35,13 +40,13 @@ aug = A.Compose([
 
 # random.seed(42)
 
-i = 1  # variable to iterate till images_to_generate
+i = 0  # variable to iterate till images_to_generate
 
-while i <= images_to_generate:
+for i in tqdm(range(images_to_generate), total=images_to_generate):
     number = random.randint(0, len(images) - 1)  # PIck a number to select an image & mask
     image = images[number]
     mask = masks[number]
-    print(image, mask)
+    # print(image, mask)
     # image=random.choice(images) #Randomly select an image name
     original_image = io.imread(image)
     original_mask = io.imread(mask)
@@ -51,7 +56,6 @@ while i <= images_to_generate:
     transformed_mask = augmented['mask']
 
     new_image_path = "%s/augmented_image_%s.png" % (img_augmented_path, i)
-    new_mask_path = "%s/augmented_mask_%s.png" % (msk_augmented_path, i)
+    new_mask_path = "%s/augmented_image_%s.png" % (msk_augmented_path, i)
     io.imsave(new_image_path, transformed_image)
     io.imsave(new_mask_path, transformed_mask)
-    i = i + 1

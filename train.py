@@ -14,8 +14,8 @@ from model import deeplabv3_plus
 from metrics import dice_loss, dice_coef, iou
 
 """ Global parameters """
-H = 512
-W = 512
+H = 256
+W = 256
 
 """ Creating a directory """
 def create_dir(path):
@@ -73,9 +73,9 @@ if __name__ == "__main__":
     create_dir("files")
 
     """ Hyperparameters """
-    batch_size = 2
+    batch_size = 24
     lr = 1e-4
-    num_epochs = 20
+    num_epochs = 50
     model_path = os.path.join("files", "model.h5")
     csv_path = os.path.join("files", "data.csv")
 
