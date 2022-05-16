@@ -9,9 +9,10 @@
     
     1.2 To predict, you need model pretrained : model.h5 in folder files or you can download here: https://drive.google.com/file/d/1BFVYCdWympC9TvhjklyxuMQRkWPOzL2_/view?usp=sharing
         python predict.py
-    After that, you will have data preprocess for gesture
+    After that, you will have data preprocess for gesture. 
 
     1.3 To get result about task1 : segmentation body, you can run file predict with model pretrained and data test
         python eval.py
     
-    After that, result will in folder contains mask predict
+    After that, result will in folder contains mask predict. To get file results.csv for task 1 you need create file results.csv and run
+        python get_result_segment.py
