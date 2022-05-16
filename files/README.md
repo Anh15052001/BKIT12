@@ -1,0 +1,4 @@
+- this folder contains log trainning data and checkpoint with best loss
+- structure: 
+    - data.csv : this file is auto created when you running, you can view data trainning in https://drive.google.com/file/d/1-0Hz6oGvis9gx5jhMXPEdaprpRpGQnmy/view?usp=sharing 
+    - model.h5: file checkpoint segmentation. You can download this file in https://drive.google.com/file/d/1BFVYCdWympC9TvhjklyxuMQRkWPOzL2_/view?usp=sharing 
