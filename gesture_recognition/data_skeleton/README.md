@@ -1,0 +1,1 @@
+Folder containt: there are file (text) skeleton point when run file python make_data.py

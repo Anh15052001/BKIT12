@@ -186,3 +186,5 @@ zfp=0.5.5=h0e60522_8
 zipp=3.8.0=pypi_0
 zlib=1.2.11=h8ffe710_1014
 zstd=1.5.2=h6255e5f_0
+mediapipe
+keras
