@@ -36,9 +36,10 @@ Mpose = mp.solutions.pose
 - You can download video data from gesture_data: https://drive.google.com/drive/folders/1YmGRa7QkOU6syYzLX3M20mu9oK-rsEeW
  and download video preprocess from body segmentation: https://drive.google.com/drive/folders/1wWfQoURpJe7hWWgYYl2_ttMj88iafzwH?fbclid=IwAR3ssDj6NrNt8U-2GMdTqwz_kQ6QVUA_LtEA26Aj6PSuy0IfyVXkaIJ1uM0
 - You will save skeleton parameters into the gesture_recognition/data_skeleton 
-- You can download data_skeleton from here: https://drive.google.com/drive/folders/1u-z2rr4FTQSDGrXmJ3O9GVcrkW99Cjo0
+- You can download data_skeleton from here: https://drive.google.com/drive/folders/1xVv3tnDGA8gbbvBXvijLdUV5L5duKMq-?usp=sharing
 - 2.3 The third, you run file gesture_recognition/train_gesture.py with path data
-from data_skeleton at step 2.2
+from data_skeleton at step 2.2 so that divide timesteps
 - You can download model from here: https://drive.google.com/drive/folders/1O-Oq47cfUTAn3K_5cUNsksPbx4Y3rSPz
-- 2.4: The fourth, you run file gesture_recogntion/predict.py so that have results
+- 2.4: The fourth, you run file gesture_recogntion/predict.py so that have results 
+- NOTE: you must run least 200 epochs
 
