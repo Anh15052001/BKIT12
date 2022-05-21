@@ -39,7 +39,7 @@ Mpose = mp.solutions.pose
 - You can download data_skeleton from here: https://drive.google.com/drive/folders/1xVv3tnDGA8gbbvBXvijLdUV5L5duKMq-?usp=sharing
 - 2.3 The third, you run file gesture_recognition/train_gesture.py with path data
 from data_skeleton at step 2.2 so that divide timesteps
-- You can download model from here: https://drive.google.com/drive/folders/1O-Oq47cfUTAn3K_5cUNsksPbx4Y3rSPz
+- You can download model from here: https://drive.google.com/file/d/1-1A4RQ2fRlHLCQJOJ6-FQnb7Xx6-3tQj/view?usp=sharing
 - 2.4: The fourth, you run file gesture_recogntion/predict.py so that have results 
 - NOTE: you must run least 200 epochs
 
