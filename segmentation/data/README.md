@@ -1,6 +1,0 @@
-- Folder image contains data to test, predict mask
-- Folder res contains result mask which is predicted mask 
-- Structure folder:
-    - data:
-        - image: data to predict
-        - res: result mask

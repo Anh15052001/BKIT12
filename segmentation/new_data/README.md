@@ -1,8 +1,0 @@
-- This folder contains data augmented to tranning. Download here: https://drive.google.com/file/d/1FwFl-E1LeA-lSz6Q5j3OSrzN8wHXdrd3/view?usp=sharing 
-- new_data:
-    - train:
-        -image:
-        -mask
-    -test:
-        -image:
-        -mask

@@ -1,7 +1,0 @@
-- include data train which is split by folder with their name.
-- structure folder:
-    - train : which folder has data training to augmented. which have mask and image
-        - image : this is data is prepared by organizing committee and merge
-        - mask : like image
-    - data: data of organizing committee used for predict data to preprocess for gesture
-    - augmented_train_256 : data augmented
