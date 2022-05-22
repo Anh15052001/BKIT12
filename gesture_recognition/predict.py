@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import os
-model=tf.keras.models.load_model('model/checkpoint_BKIT12.hdf5')
+model=tf.keras.models.load_model('model/model_test3.h5')
 #khởi tạo camera
 
 
@@ -32,7 +32,7 @@ def draw_landmark_on_image(mpDraw, results, img):
     mpDraw.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS)
     for id, lm in enumerate(results.pose_landmarks.landmark):
         h, w, c = img.shape
-        print(id, lm)
+      #  print(id, lm)
         cx, cy = int(lm.x * w), int(lm.y * h)
         cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
     return img
@@ -40,17 +40,20 @@ class_name={0:"hand_fand", 1:'look_at_me', 2:'peekaboo', 3:'reverse_signal', 4:'
 def detect(model, lm_list):
     #chuyển lm_list về tensor
     global label
+    global index
     lm_list=np.array(lm_list)
     lm_list=np.expand_dims(lm_list, axis=0)
-    print(lm_list.shape)
+    #print(lm_list.shape)
     results=model.predict(lm_list)
     #print('heloo', results)
     label=class_name[np.argmax(results)]
-    print(label)
+    index = np.argmax(results)
+    #print(label)
 
 #hàm vẽ label lên
-i=1
+
 label='...'
+index = 0
 def draw_class_on_image(label, img):
     font = cv2.FONT_HERSHEY_SIMPLEX
     bottomLeftCornerOfText = (10, 30)
@@ -67,12 +70,13 @@ def draw_class_on_image(label, img):
                 lineType)
     return img
 time_step=13
-root='public_test_data/public_test_gesture_data/data'
+root='data'
 file_name = []
 predict = []
+values = []
 for file in os.listdir(root):
 
-    print(file)
+    #print(file)
     file_name.append(file)
     cap = cv2.VideoCapture(root+"/"+file)
     while True:
@@ -81,26 +85,29 @@ for file in os.listdir(root):
             #chuyển ảnh về RGB
             frameRGB=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results=pose.process(frameRGB)
-            i+=1
-            if i > 1:
-                if results.pose_landmarks:
-                    lm=make_pose(results)
-                    lm_list.append(lm)
-                    if len(lm_list)==time_step:
-                        t=threading.Thread(target=detect, args=(model, lm_list))
-                        t.start()
-                        lm_list=[]
-                    #vẽ các điểm khung xương lên
-                    frame=draw_landmark_on_image(mpDraw, results, frame)
+
+            if results.pose_landmarks:
+                lm=make_pose(results)
+                lm_list.append(lm)
+                if len(lm_list)==time_step:
+                    t=threading.Thread(target=detect, args=(model, lm_list))
+                    t.start()
+                    lm_list=[]
+                #vẽ các điểm khung xương lên
+                frame=draw_landmark_on_image(mpDraw, results, frame)
             frame=draw_class_on_image(label, frame)
             cv2.imshow('image', frame)
+            cv2.waitKey(10)
 
             if cv2.waitKey(1)==ord('q'):
                 break
         else:
-            print("no frame")
+            #print("no frame")
             break
+
     predict.append(label)
+    values.append(index)
+    cv2.waitKey(120)
 id = []
 num_id = len(predict)
 for i in range(num_id):
